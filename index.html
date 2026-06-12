@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rutas Seguras Kids</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Rutas Seguras Kids</h1>
+
+    <section class="form-section">
+      <form id="routeForm">
+        <input type="text" id="nombreRuta" placeholder="Nombre Ruta" required />
+
+        <input type="text" id="conductor" placeholder="Conductor" required />
+
+        <input type="time" id="hora" required />
+
+        <input type="text" id="ciudad" placeholder="Ciudad" required />
+
+        <button type="submit">Crear Ruta</button>
+      </form>
+    </section>
+
+    <section id="routesContainer"></section>
+
+    <script src="js/route-card.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
