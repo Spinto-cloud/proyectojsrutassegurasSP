@@ -1,19 +1,8 @@
 const routeForm = document.getElementById("routeForm");
+
 const routesContainer = document.getElementById("routesContainer");
 
-let rutas = JSON.parse(localStorage.getItem("rutas")) || [];
-
-// ===========================
-// GUARDAR LOCALSTORAGE
-// ===========================
-
-function guardarRutas() {
-  localStorage.setItem("rutas", JSON.stringify(rutas));
-}
-
-// ===========================
-// VALIDAR FORMULARIO
-// ===========================
+let rutas = obtenerRutas();
 
 function validarFormulario(nombre, conductor, hora, ciudad) {
   if (
@@ -23,23 +12,28 @@ function validarFormulario(nombre, conductor, hora, ciudad) {
     ciudad.trim() === ""
   ) {
     alert("Todos los campos son obligatorios");
+
     return false;
   }
 
   return true;
 }
 
-// ===========================
-// EVENTO PERSONALIZADO
-// ===========================
-
 document.addEventListener("rutaCreada", (e) => {
-  console.log(`Nueva ruta creada: ${e.detail.nombre}`);
+  console.log("Nueva ruta:", e.detail.nombre);
 });
 
-// ===========================
-// CREAR RUTA
-// ===========================
+document.addEventListener("agregar-estudiante", (e) => {
+  agregarEstudiante(Number(e.detail.id));
+});
+
+document.addEventListener("editar-ruta", (e) => {
+  editarRuta(Number(e.detail.id));
+});
+
+document.addEventListener("eliminar-ruta", (e) => {
+  eliminarRuta(Number(e.detail.id));
+});
 
 routeForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -56,122 +50,83 @@ routeForm.addEventListener("submit", async (e) => {
     return;
   }
 
+  // CLIMA
   const clima = await obtenerClima(ciudad);
 
+  // NUEVA RUTA
   const nuevaRuta = {
     id: Date.now(),
+
     nombre,
+
     conductor,
+
     hora,
+
     ciudad,
+
     clima,
+
     estudiantes: [],
   };
 
   rutas.push(nuevaRuta);
 
-  guardarRutas();
+  guardarRutas(rutas);
 
   mostrarRutas();
 
   routeForm.reset();
 
+  // EVENTO PERSONALIZADO
   document.dispatchEvent(
     new CustomEvent("rutaCreada", {
       detail: {
-        nombre: nuevaRuta.nombre,
+        nombre,
       },
     }),
   );
 });
 
-// ===========================
-// MOSTRAR RUTAS
-// ===========================
-
 function mostrarRutas() {
   routesContainer.innerHTML = "";
 
   rutas.forEach((ruta) => {
-    const card = document.createElement("div");
+    const card = document.createElement("route-card");
 
-    card.classList.add("route-card");
+    card.setAttribute("id", ruta.id);
 
-    card.innerHTML = `
-      <h3>${ruta.nombre}</h3>
+    card.setAttribute("nombre", ruta.nombre);
 
-      <p>
-        <strong>Conductor:</strong>
-        ${ruta.conductor}
-      </p>
+    card.setAttribute("conductor", ruta.conductor);
 
-      <p>
-        <strong>Hora:</strong>
-        ${ruta.hora}
-      </p>
+    card.setAttribute("hora", ruta.hora);
 
-      <p>
-        <strong>Ciudad:</strong>
-        ${ruta.ciudad}
-      </p>
+    card.setAttribute("clima", ruta.clima);
 
-      <p>
-        <strong>Clima:</strong>
-        ${ruta.clima}
-      </p>
-
-      <h4>Estudiantes</h4>
-
-      <ul>
-        ${ruta.estudiantes.map((est) => `<li>${est}</li>`).join("")}
-      </ul>
-
-      <button
-        onclick="agregarEstudiante(${ruta.id})"
-      >
-        Agregar Estudiante
-      </button>
-
-      <button
-        onclick="editarRuta(${ruta.id})"
-      >
-        Editar
-      </button>
-
-      <button
-        onclick="eliminarRuta(${ruta.id})"
-      >
-        Eliminar
-      </button>
-    `;
+    card.setAttribute("estudiantes", JSON.stringify(ruta.estudiantes));
 
     routesContainer.appendChild(card);
   });
 }
 
-// ===========================
-// AGREGAR ESTUDIANTE
-// ===========================
-
-window.agregarEstudiante = function (id) {
+function agregarEstudiante(id) {
   const nombre = prompt("Nombre del estudiante:");
 
-  if (!nombre) return;
+  if (!nombre) {
+    return;
+  }
 
   const ruta = rutas.find((ruta) => ruta.id === id);
 
   ruta.estudiantes.push(nombre);
 
-  guardarRutas();
+  guardarRutas(rutas);
 
   mostrarRutas();
-};
+}
 
-// ===========================
-// EDITAR RUTA
-// ===========================
-
-window.editarRuta = function (id) {
+function editarRuta(id) {
   const ruta = rutas.find((ruta) => ruta.id === id);
 
   const nuevoNombre = prompt("Nuevo nombre:", ruta.nombre);
@@ -185,50 +140,28 @@ window.editarRuta = function (id) {
   }
 
   ruta.nombre = nuevoNombre;
+
   ruta.conductor = nuevoConductor;
+
   ruta.hora = nuevaHora;
 
-  guardarRutas();
+  guardarRutas(rutas);
 
   mostrarRutas();
-};
+}
 
-// ===========================
-// ELIMINAR RUTA
-// ===========================
-
-window.eliminarRuta = function (id) {
+function eliminarRuta(id) {
   const confirmar = confirm("¿Desea eliminar esta ruta?");
 
-  if (!confirmar) return;
+  if (!confirmar) {
+    return;
+  }
 
   rutas = rutas.filter((ruta) => ruta.id !== id);
 
-  guardarRutas();
+  guardarRutas(rutas);
 
   mostrarRutas();
-};
-
-// ===========================
-// API CLIMA
-// ===========================
-
-async function obtenerClima(ciudad) {
-  try {
-    const response = await fetch(`https://wttr.in/${ciudad}?format=j1`);
-
-    const data = await response.json();
-
-    return `${data.current_condition[0].temp_C}°C`;
-  } catch (error) {
-    console.error(error);
-
-    return "No disponible";
-  }
 }
-
-// ===========================
-// INICIALIZAR APP
-// ===========================
 
 mostrarRutas();

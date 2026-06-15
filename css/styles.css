@@ -1,180 +1,90 @@
-/* Reset */
+/* RESET */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Variables */
+/* VARIABLES */
+
 :root {
   --primario: #4caf50;
-  --primario-hover: #45a049;
   --secundario: #2196f3;
   --fondo: #f4f7fa;
-  --blanco: #ffffff;
-  --texto: #333;
-  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --blanco: #fff;
 }
 
-/* Body */
+/* BODY */
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
   background: var(--fondo);
-  color: var(--texto);
-  min-height: 100vh;
   padding: 30px;
 }
 
-/* Título */
+/* TITULO */
+
 h1 {
   text-align: center;
   color: var(--secundario);
   margin-bottom: 30px;
-  font-size: 2.5rem;
 }
 
-/* Sección formulario */
+/* FORMULARIO */
+
 .form-section {
   max-width: 800px;
   margin: auto;
   margin-bottom: 40px;
 }
 
-/* Formulario */
 #routeForm {
-  background: var(--blanco);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: var(--sombra);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
   gap: 15px;
 }
 
-/* Inputs */
 #routeForm input {
-  width: 100%;
   padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  outline: none;
-  transition: 0.3s;
-  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-#routeForm input:focus {
-  border-color: var(--secundario);
-  box-shadow: 0 0 8px rgba(33, 150, 243, 0.2);
-}
-
-/* Botón */
 #routeForm button {
   grid-column: span 2;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
+
+  padding: 12px;
+
   background: var(--primario);
+
   color: white;
-  font-size: 1rem;
+
+  border: none;
+
   cursor: pointer;
-  transition: 0.3s;
 }
 
-#routeForm button:hover {
-  background: var(--primario-hover);
-  transform: translateY(-2px);
-}
+/* CONTENEDOR */
 
-/* Contenedor de rutas */
 #routesContainer {
-  max-width: 1200px;
-  margin: auto;
-
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   gap: 20px;
 }
 
-/* Tarjetas de rutas */
-.route-card {
-  background: var(--blanco);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: var(--sombra);
-  transition: 0.3s;
-}
-
-.route-card:hover {
-  transform: translateY(-5px);
-}
-
-.route-card h3 {
-  color: var(--secundario);
-  margin-bottom: 10px;
-}
-
-.route-card p {
-  margin-bottom: 8px;
-}
-
-.route-card ul {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-.route-card li {
-  margin-bottom: 5px;
-}
-
-/* Botones de acciones */
-.acciones {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.editar,
-.eliminar {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  transition: 0.3s;
-}
-
-.editar {
-  background: #ff9800;
-}
-
-.editar:hover {
-  background: #e68900;
-}
-
-.eliminar {
-  background: #f44336;
-}
-
-.eliminar:hover {
-  background: #d32f2f;
-}
-
-/* ===================== */
 /* RESPONSIVE */
-/* ===================== */
 
-/* Celulares */
+/* CELULAR */
+
 @media (max-width: 576px) {
-  body {
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
   #routeForm {
     grid-template-columns: 1fr;
   }
@@ -184,14 +94,16 @@ h1 {
   }
 }
 
-/* Tablets */
+/* TABLET */
+
 @media (min-width: 577px) and (max-width: 992px) {
   #routesContainer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop */
+/* DESKTOP */
+
 @media (min-width: 993px) {
   #routesContainer {
     grid-template-columns: repeat(3, 1fr);
