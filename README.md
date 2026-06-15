@@ -43,3 +43,4 @@ proyectojsrutassegurasSP/
 │
 └── README.md
 
+<img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/1fe7c805-cfbd-435e-a555-3575220de182" />
