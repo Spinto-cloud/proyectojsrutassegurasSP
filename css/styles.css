@@ -232,6 +232,124 @@ route-card:hover {
 }
 
 /* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer {
+  margin-top: 70px;
+
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+
+  color: white;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  border-top: 4px solid var(--primario);
+
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* TITULO */
+
+.footer-title {
+  font-size: 1.5rem;
+
+  font-weight: 600;
+
+  color: white;
+}
+
+/* PARRAFOS */
+
+footer p {
+  color: #cbd5e1;
+
+  font-size: 15px;
+
+  margin: 0;
+
+  letter-spacing: 0.5px;
+}
+
+/* ENLACES */
+
+footer a {
+  color: white;
+
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+/* REDES */
+
+.socials {
+  display: flex;
+
+  gap: 15px;
+
+  margin-top: 10px;
+}
+
+.socials a {
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 1.2rem;
+
+  backdrop-filter: blur(5px);
+
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  transform: translateY(-5px);
+
+  background: var(--primario);
+
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  footer {
+    padding: 30px 15px;
+  }
+
+  .footer-title {
+    font-size: 1.2rem;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+/* ========================= */
 /* RESPONSIVE */
 /* ========================= */
 
