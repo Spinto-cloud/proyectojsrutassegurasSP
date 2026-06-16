@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -7,27 +8,92 @@
 
     <title>Rutas Seguras Kids</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <h1>Rutas Seguras Kids</h1>
+    <!-- HEADER -->
 
-    <section class="form-section">
-      <form id="routeForm">
-        <input type="text" id="nombreRuta" placeholder="Nombre Ruta" required />
+    <header class="hero">
+      <div class="overlay">
+        <h1>🚌 Rutas Seguras Kids</h1>
 
-        <input type="text" id="conductor" placeholder="Conductor" required />
+        <p>Gestión inteligente de rutas escolares</p>
+      </div>
+    </header>
 
-        <input type="time" id="hora" required />
+    <!-- CONTENIDO PRINCIPAL -->
 
-        <input type="text" id="ciudad" placeholder="Ciudad" required />
+    <main class="container">
+      <!-- FORMULARIO -->
 
-        <button type="submit">Crear Ruta</button>
-      </form>
-    </section>
+      <section class="form-section">
+        <div class="form-card">
+          <h2>➕ Crear Nueva Ruta</h2>
 
-    <section id="routesContainer"></section>
+          <form id="routeForm">
+            <div class="input-group">
+              <label> Nombre Ruta </label>
+
+              <input
+                type="text"
+                id="nombreRuta"
+                placeholder="Ej: Ruta Norte"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label> Conductor </label>
+
+              <input
+                type="text"
+                id="conductor"
+                placeholder="Nombre conductor"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label> Hora de salida </label>
+
+              <input type="time" id="hora" required />
+            </div>
+
+            <div class="input-group">
+              <label> Ciudad </label>
+
+              <input type="text" id="ciudad" placeholder="Ciudad" required />
+            </div>
+
+            <button type="submit">Crear Ruta</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- RUTAS -->
+
+      <section class="routes-section">
+        <div class="section-title">
+          <h2>📍 Rutas Registradas</h2>
+        </div>
+
+        <section id="routesContainer"></section>
+      </section>
+    </main>
+
+    <!-- SCRIPTS -->
 
     <script src="js/localstorage.js"></script>
 

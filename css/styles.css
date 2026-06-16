@@ -1,4 +1,6 @@
+/* ========================= */
 /* RESET */
+/* ========================= */
 
 * {
   margin: 0;
@@ -6,85 +8,264 @@
   box-sizing: border-box;
 }
 
+/* ========================= */
 /* VARIABLES */
+/* ========================= */
 
 :root {
   --primario: #4caf50;
+  --primario-hover: #43a047;
+
   --secundario: #2196f3;
-  --fondo: #f4f7fa;
+
+  --rojo: #f44336;
+
+  --naranja: #ff9800;
+
+  --fondo: #f4f7fb;
+
+  --texto: #333;
+
   --blanco: #fff;
+
+  --gris: #777;
+
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* ========================= */
 /* BODY */
+/* ========================= */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
+
   background: var(--fondo);
-  padding: 30px;
+
+  color: var(--texto);
 }
 
-/* TITULO */
+/* ========================= */
+/* HERO */
+/* ========================= */
 
-h1 {
+.hero {
+  width: 100%;
+
+  height: 300px;
+
+  background:
+    linear-gradient(rgba(33, 150, 243, 0.7), rgba(76, 175, 80, 0.7)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400");
+
+  background-size: cover;
+
+  background-position: center;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
   text-align: center;
-  color: var(--secundario);
-  margin-bottom: 30px;
+
+  color: white;
 }
 
-/* FORMULARIO */
+.overlay h1 {
+  font-size: 3rem;
 
-.form-section {
-  max-width: 800px;
+  margin-bottom: 15px;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+
+  font-weight: 300;
+}
+
+/* ========================= */
+/* CONTENEDOR */
+/* ========================= */
+
+.container {
+  width: 90%;
+
+  max-width: 1200px;
+
   margin: auto;
+
+  margin-top: -70px;
+
+  position: relative;
+}
+
+/* ========================= */
+/* FORMULARIO */
+/* ========================= */
+
+.form-card {
+  background: var(--blanco);
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+
   margin-bottom: 40px;
 }
 
-#routeForm {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+.form-card h2 {
+  margin-bottom: 25px;
 
+  color: var(--secundario);
+}
+
+#routeForm {
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 15px;
+  gap: 20px;
 }
 
-#routeForm input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+/* INPUT GROUP */
+
+.input-group {
+  display: flex;
+
+  flex-direction: column;
 }
+
+.input-group label {
+  margin-bottom: 8px;
+
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 14px;
+
+  border-radius: 10px;
+
+  border: 2px solid #ddd;
+
+  outline: none;
+
+  transition: 0.3s;
+
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  border-color: var(--secundario);
+
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+/* BOTON */
 
 #routeForm button {
   grid-column: span 2;
 
-  padding: 12px;
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 12px;
 
   background: var(--primario);
 
   color: white;
 
-  border: none;
+  font-size: 1rem;
+
+  font-weight: 600;
 
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
-/* CONTENEDOR */
+#routeForm button:hover {
+  background: var(--primario-hover);
+
+  transform: translateY(-2px);
+}
+
+/* ========================= */
+/* SECCION RUTAS */
+/* ========================= */
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  color: var(--secundario);
+}
+
+/* ========================= */
+/* CONTENEDOR RUTAS */
+/* ========================= */
 
 #routesContainer {
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
-  gap: 20px;
+  gap: 25px;
 }
 
+/* ========================= */
+/* WEB COMPONENT */
+/* ========================= */
+
+route-card {
+  transition: 0.3s;
+}
+
+route-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ========================= */
 /* RESPONSIVE */
+/* ========================= */
 
-/* CELULAR */
+/* TABLET */
 
-@media (max-width: 576px) {
+@media (max-width: 992px) {
+  .overlay h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* MOVIL */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 250px;
+
+    padding: 20px;
+  }
+
+  .overlay h1 {
+    font-size: 2rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .container {
+    width: 95%;
+
+    margin-top: -40px;
+  }
+
   #routeForm {
     grid-template-columns: 1fr;
   }
@@ -94,18 +275,14 @@ h1 {
   }
 }
 
-/* TABLET */
+/* MOVILES PEQUEÑOS */
 
-@media (min-width: 577px) and (max-width: 992px) {
-  #routesContainer {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 480px) {
+  .overlay h1 {
+    font-size: 1.8rem;
   }
-}
 
-/* DESKTOP */
-
-@media (min-width: 993px) {
-  #routesContainer {
-    grid-template-columns: repeat(3, 1fr);
+  .form-card {
+    padding: 20px;
   }
 }
