@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filtro de estudiantes por ruta</title>
+    <link rel="stylesheet" href="css/filtrar.css" />
+  </head>
+  <body>
+    <div class="contenedor">
+      <h1>Rutas Seguras Kids</h1>
+      <label for="filtraruta">Filtrar por ruta:</label>
+      <select id="filtraruta">
+        <option value="Todas">Todas</option>
+        <option value="Ruta Norte">Ruta Norte</option>
+        <option value="Ruta Sur">Ruta Sur</option>
+        <option value="Ruta Centro">Ruta Centro</option>
+      </select>
+      <ul id="listaestudiantes"></ul>
+    </div>
+    <script src="js/filtrar.js"></script>
+  </body>
+</html>

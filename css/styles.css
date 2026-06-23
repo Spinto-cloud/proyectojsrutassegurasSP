@@ -85,6 +85,27 @@ body {
   font-weight: 300;
 }
 
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.a-encabezado {
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.a-encabezado li {
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.a-encabezado li:hover {
+  color: #38bdf8;
+}
+
 /* ========================= */
 /* CONTENEDOR */
 /* ========================= */
